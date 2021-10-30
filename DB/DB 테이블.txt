@@ -1,0 +1,62 @@
+DB 데이터 베이스 이름 : web_DB
+데이터 베이스 id : webtm
+데이터 베이스 pw : webtm123
+
+
+
+CREATE TABLE boards(			//보드 테이블
+
+	board_sno AUTO INCREMENT,	//일련번호	pk
+	menu_id VARCHAR(10),		//메뉴번호(code) 	fk
+	board_id VARCHAR(10),		//게시글 번호	
+	board_title VARCHAR(12),		//제목
+	board_content VARCHAR(1024),	//내용
+	board_fdate VARCHAR(10),		//최초 작성일	(date / 2021-01-01) // SELECT CONVERT(CHAR(10),GETDATE(),120);
+	board_rdate VARCHAR(10),		//수정한 작성일	(date / 2021-01-01)
+	board_ftime VARCHAR(6),		//최초 작성시간	(date / 23:01 ) // SELECT CONVERT(CHAR(5), GETDATE(),108);
+	board_rtime VARCHAR(6),		//수정한 시간	(date / 23:01 )
+	view_count INT,			//조회수
+	PRIMARY KEY CLUSTERED (board_sno);
+)
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+CREATE TABLE auth(
+	
+	sno VARCHAR(10),					//일련번호 pk
+	auth_id VARCHAR(10),				//관리자 id
+	user_id VARCHAR(100),				//회원 id
+	CONSTRAINT auth_pk PRIMARY KEY CLUSTERED (sno);
+)
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+CREATE TABLE menu(
+
+	menu_id VARCHAR(10),				//메뉴 번호
+	menu_nm VARCHAR(100),				//메뉴 이름
+	menu_url VARCHAR(100),				//메뉴 주소
+	auth VARHCHAR(1),				//권한 확인
+	CONSTRAINT menu_pk PRIMARY KEY CLUSTERED (menu_id);
+)
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+CREATE TABLE menu_auth(
+
+	sno VARHCHAR(10),				//일련번호
+	auth_id VARCHAR(10),				//관리자 id
+	menu_id VRCHAR(10),				//메뉴 번호
+	CONSTRAINT menu_auth_pk PRIMARY KEY CLUSTERED (sno);
+)
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+CREATE TABLE users(
+
+	user_id VARCHAR(10),				//사용자 id
+	user_pw VARCHAR(100),				//사용자 pw
+	user_nm VARCHAR(100),				//사용자 이름
+	CONSTRAINT users_pk PRIMARY KEY CLUSTERED (user_id);
+)
