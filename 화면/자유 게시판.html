@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<title>자유 게시판</title>
+		<meta name="description" content="허정민의 문서">
+		<link href="style.css" rel="stlyesheet" type"text/css" />
+		<style>
+			.title {
+				font-size: 60px;
+				font-weight: bold;
+			}
+			#menu{
+				height: 30px;
+				width: 1000px;
+			}
+			#menu ul li {
+				list-style: none;
+				color: white;
+				background-color: white;
+				float: left;
+				line-height: 30px;
+				vertical-align: middle;
+				text-align: center;
+			}
+			#menu .menuLink {
+				text-decoration:none;
+				color: black;                              
+                display: block;                            
+                width: 150px;                              
+				font-size: 12px;                           
+                font-weight: bold;                         
+                font-family: "Trebuchet MS", Dotum, Arial;
+			}
+			#menu .menuLink:hover{
+				color: white;                   
+                background-color: black; 
+			}
+		</style>
+	</head>
+	<body>
+		<div class = "title">
+			00 동아리 게시글
+		</div>
+		<nav id="menu" >
+            <ul>
+                    <li><a class="menuLink" href="동아리 홈 화면.html">Home</a></li>
+                    <li><a class="menuLink" href="공지.html">Notice</a></li>
+					<li><a class="menuLink" href="자유 게시판.html">자유게시판</a></li>
+                    <li><a class="menuLink" href="홍보.html">홍보</a></li>
+                    <li><a class="menuLink" href="동아리 활동.html">동아리 활동</a></li>
+            </ul>
+        </nav>		
+		<form name="free" method="POST">
+		<fieldset>
+			<legend>자유 게시판</legend>
+				<table>	
+				</table>
+		</fieldset>
+		</form>
+	</body>
+</html>
