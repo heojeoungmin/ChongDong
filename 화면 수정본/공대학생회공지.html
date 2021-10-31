@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+	<head>
+		<title>공대학생회 홈페이지</title>
+		<meta name="description" content="공대학생회">
+		<link rel="icon" href="목해대로고.png">
+		<link href="style.css" rel="stlyesheet" type"text/css" />
+		<style>
+			.title {
+				font-size: 60px;
+				font-weight: bold;
+			}
+			#menu{
+				height: 30px;
+				width: 1000px;
+			}
+			#menu ul li {
+				list-style: none;
+				color: white;
+				background-color: white;
+				float: left;
+				line-height: 30px;
+				vertical-align: middle;
+				text-align: center;
+			}
+			#menu .menuLink {
+				text-decoration:none;
+				color: black;                              
+                display: block;                            
+                width: 150px;                              
+				font-size: 12px;                           
+                font-weight: bold;                         
+                font-family: "Trebuchet MS", Dotum, Arial;
+			}
+			#menu .menuLink:hover{
+				color: white;                   
+                background-color: black; 
+			}
+
+		</style>
+	</head>
+	<body>
+		<h1>공대학생회</h1>
+		<nav id="menu" >
+                <ul>
+                        <li><a class="menuLink" href="공대학생회홈페이지.html">Home</a></li>
+                        <li><a class="menuLink" href="공대학생회공지.html">Notice</a></li>
+						<li><a class="menuLink" href="공대학생회자유게시판.html">자유게시판</a></li>
+                        <li><a class="menuLink" href="공대학생회활동.html">동아리 활동</a></li>
+                </ul>
+        </nav>
+		<br>
+		<form name="notice" method="POST">
+		<fieldset>
+				<table>		
+					<tr>
+						<ul>&lt;공지글 권한&gt;
+							<li>공지글은 동아리 회장과 홈페이지 관리자만이 글 작성, 수정, 삭제 가능합니다.
+						</ul>
+						<hr>
+						<ul>&lt;게시글 권한&gt;
+							<li>게시글은 동아리 회장과 회원만이 글 작성, 수정, 삭제 가능합니다.
+							<li>단, 회원은 본인이 작성한 글만 수정, 삭제 가능합니다.
+						</ul>
+					</tr>
+				</table>
+		</fieldset>
+		</form>
+	</body>
+</html>
