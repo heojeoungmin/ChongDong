@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+	<title>목포해양대학교 동아리연합회</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="목해대로고.png">
+	<script type="text/javascript">
+		function showLogin(){
+			window.open("로그인.html", "로그인", "width=400, height=100, left=100, top=50");
+		}
+		function showJoin() {
+			window.open("회원가입.html", "회원가입", "width=500, height=700, left=100, top=50");
+		}
+	</script>
+	<style type="text/css">
+		body {
+			background-image : url('목해대사진.png');
+			background-size : 100%;
+			background-attachment : fixed;
+		}
+		h1 { 
+			color : #58ACFA;
+			font-weight : bold;
+			font-size : 30px;
+			text-shadow : 3px 3px 3px #D8D8D8;
+			
+		}
+		select {
+			font-size : 1rem;
+			font-weight : 400;
+			line-height : 1.5;
+			
+			color : #444;
+			background-color : #fff;
+			
+			padding : 0.6em 30em 0.5em 0.8em;
+			margin : 0;
+			
+			border : 0.1em solid #aaa;
+			border-radius : 0.5em;
+		}
+		form {
+			position :fixed;
+			left : 100px;
+			right : 100px;
+			top : 200px;
+			bottom : 50px;
+		}
+		#btn1 {
+			position : fixed;
+			left : 84.5em;
+			top : 0.7em;
+		}
+		#btn2 {
+			position : fixed;
+			left : 90em;
+			top : 0.7em;
+		}
+	</style>
+</head>
+<body>
+	<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목포해양대학교 동아리연합회</h1>
+	<form>
+		<label>동아리 보기</label>
+		<select onchange="window.open(value,'_blank');">
+			<option value="">동아리 선택을 하면 해당 동아리 홈페이지로 이동합니다.</option>
+			<optgroup label="학생회">
+				<option value="공대학생회홈페이지.html">공대학생회</option>
+			<optgroup label="전공동아리">
+				<option value="컴퓨터공학과동아리홈페이지.html">컴퓨터공학과동아리</option>
+			<optgroup label="자율동아리">
+				<option value="킥보드동아리홈페이지.html">킥보드동아리</option>
+		</select>
+	</form>
+	<button id="btn1" type="button" onclick="showJoin();">회원가입</button>
+	<button id="btn2" type="button" onclick="showLogin();">로그인</button>
+</body>
+</html>

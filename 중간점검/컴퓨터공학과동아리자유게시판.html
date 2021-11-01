@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+	<head>
+		<title>컴퓨터공학과동아리 자유게시판</title>
+		<meta name="description" content="컴퓨터공학과동아리">
+		<link rel="icon" href="목해대로고.png">
+		<link href="style.css" rel="stlyesheet" type"text/css" />
+		<style>
+			.title {
+				font-size: 60px;
+				font-weight: bold;
+			}
+			#menu{
+				height: 30px;
+				width: 1000px;
+			}
+			#menu ul li {
+				list-style: none;
+				color: white;
+				background-color: white;
+				float: left;
+				line-height: 30px;
+				vertical-align: middle;
+				text-align: center;
+			}
+			#menu .menuLink {
+				text-decoration:none;
+				color: black;                              
+                display: block;                            
+                width: 150px;                              
+				font-size: 12px;                           
+                font-weight: bold;                         
+                font-family: "Trebuchet MS", Dotum, Arial;
+			}
+			#menu .menuLink:hover{
+				color: white;                   
+                background-color: black; 
+			}
+			#a {
+				float : right;
+			}
+			#aa {
+				text-decoration : none;
+			}
+			a:link {
+				color : black;
+			}
+			a:visited {
+				color : black;
+			}
+			a:hover {
+				color : #A71BDE;
+			}
+			#li {
+				color : #147814;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>컴퓨터공학과동아리</h1>
+		<nav id="menu" >
+            <ul>
+                    <li><a class="menuLink" href="컴퓨터공학과동아리홈페이지.html">Home</a></li>
+                    <li><a class="menuLink" href="컴퓨터공학과동아리공지.html">Notice</a></li>
+					<li><a class="menuLink" href="컴퓨터공학과동아리자유게시판.html">자유게시판</a></li>
+                    <li><a class="menuLink" href="컴퓨터공학과동아리활동.html">동아리 활동</a></li>
+            </ul>
+        </nav>
+		<br>
+		<br>
+		
+		<form name="free" method="POST">
+		<fieldset>
+			<table>
+				<a id="a" href="글작성.html" target='_blank'>글쓰기</a>
+				<ul>
+					<li id="li">게시글 작성하실 때, 학번과 이름을 꼭 써주시길 바랍니다.
+				</ul>
+				<hr>
+				<a id="aa" href="#">1. 20173305 김민수입니다. 회의 언제할까요?</a><br>
+				<a id="aa" href="#">2. 20193352 허정민입니다. 건의사항 있습니다.</a><br>
+				<a id="aa" href="#">3. 20193355 황다영입니다. 회식 언제해요?</a><br>
+				<a id="aa" href="#">4. 20193356 양현민입니다. 이번주 회의기록입니다.</a><br>
+			</table>
+		</fieldset>
+		</form>
+	</body>
+</html>
