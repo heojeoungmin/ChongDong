@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+	<Loggers>
+		<logger name="jdbc.sqlonly" level="debug" />
+		<logger name="jdbc.sqltiming" level="info" />
+		<logger name="jdbc.audit" level="off" />
+		<logger name="jdbc.resultset" level="off" />
+		<logger name="jdbc.resultsettable" level="error" />
+		<logger name="jdbc.connection" level="info" />
+	</Loggers>
+</Configuration>

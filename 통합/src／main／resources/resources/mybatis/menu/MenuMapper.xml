@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.menu.model.MenuMapper">
+    
+    <resultMap type="HashMap" id="menuMap">
+    	<id column="menu_id" property="menuId"/>
+    	<id column="menu_nm" property="menuNm"/>
+    	<id column="menu_url" property="menuUrl"/>
+    </resultMap>
+    
+    <select id="selectMenuList" parameterType="hashmap"  resultMap="menuMap">
+        select 
+        	 a.menu_id 
+        	,a.menu_nm
+        	,a.menu_url
+        from menu a
+			,menu_auth b
+		where a.menu_id = b.menu_id
+		<if test="loginId != null and loginId != ''">
+			and b.auth_id = ISNULL((select auth_id from auth where user_id = #{loginId}),'N')
+		</if>
+		<if test="loginId == null or loginId == ''">
+			and b.auth_id = 'N'
+		</if>
+		
+    </select>
+    
+</mapper>
