@@ -24,12 +24,21 @@ public class BoardServiceImpl implements BoardService {
 		return results;
 	}
 	
+	//게시글 추가
 	@Override
-	public List<HashMap<String, String>> getBoardList2() {
+	public int insertBoards(HashMap<String, String> pMap) {
 		
-		List<HashMap<String, String>> results = boardMapper.selectBoardList2();
+		int results = boardMapper.insertBoards(pMap);
 		
 		return results;
 	}
 	
+	//게시글 수정
+	@Override
+	public int updateBoards(HashMap<String, String> pMap) {
+		
+		int results = boardMapper.updateBoards(pMap);
+		
+		return results;
+	}
 }

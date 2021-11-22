@@ -39,19 +39,39 @@ public class BoardController {
 		return reqMap;
 	}
 	
+	//ajax 호출  게시글 추가 
 	@ResponseBody
-	@RequestMapping(value="/getBoardList2.do")
-	private Map<String, Object> getBoardList2(@RequestBody HashMap<String, String> map) {
-		
+	@RequestMapping(value="/insertBoards.do")
+	private Map<String, Object> createMenu(@RequestBody HashMap<String, String> map) {
+			
 		Map<String, Object> reqMap = new HashMap<String, Object>();
 		
-		List<HashMap<String,String>> results = boardService.getBoardList2();
-		
-		reqMap.put("boardList", results);
-		
+		int results = boardService.insertBoards(map);
+
+		String check = "N";
+		if(results == 1) {
+			check = "Y";
+		}
+		reqMap.put("insertBoards", check);
+			
 		return reqMap;
 	}
 	
-	
-	
+	//ajax 호출 게시글 수정
+	@ResponseBody
+	@RequestMapping(value="/updateBoards.do")
+	private Map<String, Object> updateBoards(@RequestBody HashMap<String, String> map) {
+			
+		Map<String, Object> reqMap = new HashMap<String, Object>();
+		
+		int results = boardService.updateBoards(map);
+
+		String check = "N";
+		if(results == 1) {
+			check = "Y";
+		}
+		reqMap.put("updateBoards", check);
+			
+		return reqMap;
+	}
 }

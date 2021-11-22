@@ -10,7 +10,9 @@ public interface BoardMapper {
 	
 	List<HashMap<String,String>> selectBoardList();
 	
-	List<HashMap<String,String>> selectBoardList2();
+	//게시글 추가
+	int insertBoards(HashMap<String,String> pMap);
 	
-	
+	//게시글 수정
+	int updateBoards(HashMap<String,String> pMap);
 }

@@ -15,10 +15,41 @@ public class MenuServiceImpl implements MenuService {
 	@Autowired
 	MenuMapper menuMapper;
 	
+	//메뉴조회
 	@Override
 	public List<HashMap<String, String>> selectMenuList(HashMap<String, String> pMap) {
 		
 		List<HashMap<String, String>> results = menuMapper.selectMenuList(pMap);
+		
+		return results;
+	}
+	
+	//메뉴추가
+	@Override
+	public int insertMenu(HashMap<String, String> pMap) {
+		
+		int results = menuMapper.insertMenu(pMap);
+		
+		pMap.put("authId", "N");
+		results = menuMapper.authMenu(pMap);
+		
+		return results;
+	}
+	
+	//메뉴 변경
+	@Override
+	public int updateMenu(HashMap<String, String> pMap) {
+		
+		int results = menuMapper.updateMenu(pMap);
+		
+		return results;
+	}
+	
+	//메뉴권한
+	@Override
+	public int authMenu(HashMap<String, String> pMap) {
+		
+		int results = menuMapper.authMenu(pMap);
 		
 		return results;
 	}
