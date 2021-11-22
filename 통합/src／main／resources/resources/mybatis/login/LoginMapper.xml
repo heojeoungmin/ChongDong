@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.login.model.LoginMapper">
+    
+    <resultMap type="HashMap" id="loginMap">
+    	<id column="user_id" property="userId"/>
+    	<id column="user_pw" property="userPw"/>
+    	<id column="user_nm" property="userNm"/>
+    </resultMap>
+    
+    <!-- 로그인  -->
+    <select id="selectLogin" parameterType="hashmap"  resultMap="loginMap">
+		select 
+			  user_id
+			 ,user_pw
+			 ,user_nm
+		from 
+			 users
+		where user_id = #{userId} 
+		and user_pw = #{userPw} 	
+    </select>
+    
+    <!-- 비밀번호 변경 -->
+    <update id="updatePw" parameterType="hashmap">
+	    update users set
+			 user_pw = #{userPw} 
+			,modify_id = #{userId}
+			,modify_dt = GETDATE()
+		where user_id = #{userId}
+    </update>
+    
+    <!-- 회원가입 -->
+    <insert id="insertUser" parameterType="hashmap">
+    	insert into users
+    	(
+			 user_id
+			,user_pw
+			,user_nm
+			,regist_dt
+			,modify_dt
+			,regist_id
+			,modify_id
+		) 
+		values
+		(
+			 #{userId}
+			,#{userPw}
+			,#{userNm}
+			,GETDATE()
+			,GETDATE()
+			,#{userId}
+			,#{userId}
+		)
+    </insert>
+    
+    <!-- 회원가입 아이디 중복확인 -->
+    <select id="checkUserid" parameterType="hashmap"  resultType="int">
+	    select count(*)
+		from users
+		where user_id = #{userId}
+    </select>
+</mapper>

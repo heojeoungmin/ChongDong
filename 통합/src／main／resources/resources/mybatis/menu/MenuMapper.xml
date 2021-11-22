@@ -9,21 +9,83 @@
     	<id column="menu_url" property="menuUrl"/>
     </resultMap>
     
+    
+    <!-- 메뉴조회 -->
     <select id="selectMenuList" parameterType="hashmap"  resultMap="menuMap">
         select 
         	 a.menu_id 
         	,a.menu_nm
         	,a.menu_url
-        from menu a
-			,menu_auth b
-		where a.menu_id = b.menu_id
-		<if test="loginId != null and loginId != ''">
-			and b.auth_id = ISNULL((select auth_id from auth where user_id = #{loginId}),'N')
+        from menu as a
+			inner join menu_auth as b
+		    on a.menu_id = b.menu_id
+		<if test="userId != null and userId != ''">
+			    and b.auth_id = ISNULL((select auth_id from auth where user_id = #{userId}),'N')
 		</if>
-		<if test="loginId == null or loginId == ''">
-			and b.auth_id = 'N'
+		<if test="userId == null or userId == ''">
+			    and b.auth_id = 'N'
 		</if>
-		
+		where use_yn = 'Y'
     </select>
+    
+    <!-- 메뉴 추가 -->
+    <insert id="insertMenu" parameterType="hashmap">
+	    insert into menu
+		(
+			 menu_id
+			,menu_nm
+			,menu_url
+			,regist_dt
+			,modify_dt
+			,regist_id
+			,modify_id
+			,use_yn
+		) 
+		values
+		(
+			 #{menuId}
+			,#{menuNm}
+			,#{menuUrl}
+			,GETDATE()
+			,GETDATE()
+			,#{userId}
+			,#{userId}
+			,'Y'
+		)
+    </insert>
+    
+    <!-- 메뉴 변경 -->
+    <update id="updateMenu" parameterType="hashmap">
+	    update menu set
+			 menu_nm = #{menuNm}
+			,menu_url = #{menuUrl}
+			,modify_dt = GETDATE()
+			,modify_id = #{userId}
+		where menu_id = #{menuId}
+    </update>
+    
+    <!-- 메뉴 권한 -->
+    <insert id="authMenu" parameterType="hashmap">
+	    INSERT INTO menu_auth 
+		(
+			 sno
+			,auth_id
+			,menu_id
+			,regist_dt
+			,modify_dt
+			,regist_id
+			,modify_id
+		)
+		values
+		(
+			 (select max(sno)+1 from menu_auth)
+			,#{authId}
+			,#{menuId}
+			,GETDATE()
+			,GETDATE()
+			,#{userId}
+			,#{userId}
+		)
+    </insert>
     
 </mapper>

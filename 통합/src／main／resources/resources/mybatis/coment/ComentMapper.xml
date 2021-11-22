@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.coment.model.ComentMapper">
+    
+    <resultMap type="HashMap" id="comentMap">
+    	<id column="user_id" property="userId"/>
+    	<id column="user_pw" property="userPw"/>
+    	<id column="user_nm" property="userNm"/>
+    </resultMap>
+    
+    <!-- 댓글 작성 -->
+    <insert id="insertComent" parameterType="hashmap">
+	    INSERT INTO boards_comments
+		(
+			 menu_id
+			,boards_sno
+			,comments_sno
+			,contents
+			,regist_dt
+			,modify_dt
+			,regist_id
+			,modify_id
+			,delete_yn
+			,parents_sno
+		)
+		values
+		(
+			  #{menuId}
+			 ,#{boardsSno}
+			 ,ISNULL((select 
+							MAX(comments_sno) 
+					  from boards_comments 
+					  where boards_sno = #{boardsSno} and menu_id = #{menuId}),0)+1
+			 ,#{contents}
+			 ,GETDATE()
+			 ,GETDATE()
+			 ,#{userId}
+			 ,#{userId}
+			 ,'N'
+			 ,#{parentsSno}
+		)
+    </insert>
+    
+    <!-- 댓글 수정 -->
+    <update id="updateComent" parameterType="hashmap">
+    	update boards_comments set
+			 contents = #{contents}
+			,modify_dt = GETDATE()
+			,modify_id = #{userId}
+		where menu_id = #{menuId}
+		and	boards_sno = #{boardsSno}
+		and comments_sno = #{commentsSno}
+    </update>
+    
+    <!-- 댓글 삭제 -->
+    <update id="deleteComent" parameterType="hashmap">
+	    update boards_comments set 
+			 delete_yn = 'Y'
+			,modify_dt = GETDATE()
+			,modify_id = #{userId}
+		where menu_id = #{menuId}
+		and	boards_sno = #{boardsSno}
+		and comments_sno = #{commentsSno}
+    </update>
+  
+</mapper>
